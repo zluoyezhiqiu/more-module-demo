@@ -1,5 +1,6 @@
 plugins {
     id("logic.android.library")
+    id("logic.android.library.jacoco")
 }
 
 android {
@@ -7,5 +8,6 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
+    implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.lifecycle.viewmodel.ktx)
 }

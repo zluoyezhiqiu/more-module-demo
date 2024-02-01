@@ -31,10 +31,24 @@ gradlePlugin {
             id = "logic.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
         }
+        register("androidFlavors") {
+            id = "logic.android.application.flavors"
+            implementationClass = "AndroidApplicationFlavorsConventionPlugin"
+        }
+        register("androidApplicationJacoco") {
+            id = "logic.android.application.jacoco"
+            implementationClass = "AndroidApplicationJacocoConventionPlugin"
+        }
+
         register("androidLibrary") {
             id = "logic.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
         }
+        register("androidLibraryJacoco") {
+            id = "logic.android.library.jacoco"
+            implementationClass = "AndroidLibraryJacocoConventionPlugin"
+        }
+
         register("androidHilt") {
             id = "logic.android.hilt"
             implementationClass = "AndroidHiltConventionPlugin"
@@ -42,10 +56,6 @@ gradlePlugin {
         register("androidRoom") {
             id = "logic.android.room"
             implementationClass = "AndroidRoomConventionPlugin"
-        }
-        register("androidLibraryJacoco") {
-            id = "logic.android.library.jacoco"
-            implementationClass = "AndroidLibraryJacocoConventionPlugin"
         }
     }
 }

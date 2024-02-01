@@ -1,12 +1,11 @@
 plugins {
     id("logic.android.library")
-    id("logic.android.library.jacoco")
-    id("logic.android.room")
     id("logic.android.hilt")
+    id("logic.android.library.jacoco")
 }
 
 android {
-    namespace = "com.yyzy.main.core.database"
+    namespace = "com.yyzy.main.core.data"
 }
 
 dependencies {
@@ -14,4 +13,5 @@ dependencies {
     implementation(libs.kotlinx.datetime)
     implementation(project(":core:common"))
     implementation(project(":core:model"))
+    implementation(project(":core:database"))
 }

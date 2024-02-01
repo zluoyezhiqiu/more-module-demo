@@ -58,6 +58,7 @@ room = "2.5.0"
 secrets = "2.0.1"
 turbine = "0.12.1"
 kotlin1922 = "1.9.22"
+lifecycleKtx = "2.6.2"
 
 [libraries]
 accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "accompanist" }
@@ -141,6 +142,10 @@ room-compiler = { group = "androidx.room", name = "room-compiler", version.ref =
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleKtx" }
+lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleKtx" }
+fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version = "1.6.2" }
+activity-ktx = { group = "androidx.activity", name = "activity-ktx", version = "1.8.2" }
 
 # Dependencies of the included build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
@@ -160,4 +165,4 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }
 secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secrets" }
-kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin1922" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

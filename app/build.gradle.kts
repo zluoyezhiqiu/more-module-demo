@@ -1,11 +1,15 @@
 plugins {
-    id ("logic.android.application")
+    id("logic.android.application")
+    id("logic.android.hilt")
+    id("logic.android.application.flavors")
+    id("logic.android.application.jacoco")
+    id("jacoco")
 }
 
 android {
     defaultConfig {
         applicationId = "com.yyzy.main"
-        versionCode  = 1
+        versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -14,17 +18,27 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx.v180)
-    implementation(libs.androidx.appcompat.v141)
+
+    implementation (project(":core:data"))
+    implementation (project(":core:common"))
+
+    implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit4)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core.v340)
+
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.activity.ktx)
+    implementation(libs.fragment.ktx)
 }

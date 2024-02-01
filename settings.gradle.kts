@@ -17,3 +17,5 @@ rootProject.name = "more-module-demo"
 include (":app")
 include (":core:database")
 include(":core:common")
+include(":core:data")
+include(":core:model")
