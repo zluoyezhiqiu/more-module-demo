@@ -1,4 +1,4 @@
-import com.build.logic.printlnLogic
+import com.yyzy.logic.printlnLogic
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 

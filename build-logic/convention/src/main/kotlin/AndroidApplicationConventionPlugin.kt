@@ -1,8 +1,8 @@
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.variant.ApplicationAndroidComponentsExtension
-import com.build.logic.configureGradleManagedDevices
-import com.build.logic.configureKotlinAndroid
-import com.build.logic.configurePrintApksTask
+import com.yyzy.logic.configureGradleManagedDevices
+import com.yyzy.logic.configureKotlinAndroid
+import com.yyzy.logic.configurePrintApksTask
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 

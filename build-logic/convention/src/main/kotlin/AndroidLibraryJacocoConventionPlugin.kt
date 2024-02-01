@@ -1,5 +1,5 @@
 import com.android.build.api.variant.LibraryAndroidComponentsExtension
-import com.build.logic.configureJacoco
+import com.yyzy.logic.configureJacoco
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.getByType
 
