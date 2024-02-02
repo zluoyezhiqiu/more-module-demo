@@ -15,14 +15,24 @@ class AndroidRoomConventionPlugin : BasePlugin() {
     override fun applyPlugin(target: Project) {
         with(target) {
             pluginManager.apply("com.google.devtools.ksp")
-
             extensions.configure<KspExtension> {
                 // The schemas directory contains a schema file for each version of the Room database.
                 // This is required to enable Room auto migrations.
                 // See https://developer.android.com/reference/kotlin/androidx/room/AutoMigration.
                 arg(RoomSchemaArgProvider(File(projectDir, "schemas")))
             }
-
+//            extensions.configure<LibraryExtension> {
+//                buildTypes.configureEach {
+//                    printlnLogic("findByName RoomSchemaArgProvider ---->>")
+//                    javaCompileOptions.annotationProcessorOptions
+//                        .compilerArgumentProvider(
+//                            RoomSchemaArgProvider(
+//                                File(projectDir, "schemas"),
+//                                isKsp = false
+//                            )
+//                        )
+//                }
+//            }
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
             dependencies {
                 add("implementation", libs.findLibrary("room.runtime").get())
@@ -40,7 +50,12 @@ class AndroidRoomConventionPlugin : BasePlugin() {
         @get:InputDirectory
         @get:PathSensitive(PathSensitivity.RELATIVE)
         val schemaDir: File,
+        private val isKsp : Boolean = true
     ) : CommandLineArgumentProvider {
-        override fun asArguments() = listOf("room.schemaLocation=${schemaDir.path}")
+        override fun asArguments() = listOf(
+            if (isKsp) "room.schemaLocation=${schemaDir.path}" else "-Aroom.schemaLocation=${schemaDir.path}",
+            "room.incremental=true",
+            "room.expandProjection=true"
+        )
     }
 }

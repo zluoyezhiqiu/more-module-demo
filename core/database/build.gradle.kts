@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.tasks.factory.dependsOn
+
 plugins {
     id("logic.android.library")
     id("logic.android.library.jacoco")

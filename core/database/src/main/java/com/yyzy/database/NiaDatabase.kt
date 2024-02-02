@@ -13,10 +13,10 @@ import com.yyzy.database.util.ListConverter
     entities = [
         LifeTrackEntity::class,
     ],
-    version = 1,
+    version = 2,
     autoMigrations = [
         AutoMigration(from = 1, to = 2),
-        AutoMigration(from = 2, to = 3, spec = DatabaseMigrations.Schema2to3::class),
+        //AutoMigration(from = 2, to = 3, spec = DatabaseMigrations.Schema2to3::class),
     ],
     exportSchema = true,
 )

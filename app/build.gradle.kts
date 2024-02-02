@@ -24,12 +24,20 @@ android {
             )
         }
     }
+    packaging {
+        resources {
+            excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+        }
+    }
 }
 
 dependencies {
 
     implementation (project(":core:data"))
     implementation (project(":core:common"))
+    implementation (project(":feature:business"))
+
+    compileOnly(project(":core:database"))
 
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

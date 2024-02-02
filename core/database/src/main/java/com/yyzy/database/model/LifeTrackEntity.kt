@@ -31,10 +31,10 @@ data class LifeTrackEntity(
 ){
     override fun toString(): String {
         return "LifeTrackEntity(id='$id'," +
-                "like='$like', " +
-                "type='$type', " +
-                "character='$character', \n" +
-                "lifeTrack=$lifeTrack, \n" +
+                "like='$like'," +
+                "type='$type'," +
+                "character='$character',\n" +
+                "lifeTrack=$lifeTrack,\n" +
                 "classGradle=$classGradle)"
     }
 }
