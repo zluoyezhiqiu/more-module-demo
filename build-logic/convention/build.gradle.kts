@@ -23,6 +23,9 @@ dependencies {
     compileOnly(libs.firebase.performance.gradle)
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.ksp.gradlePlugin)
+
+    compileOnly("com.android.tools:common:31.2.2")
+    compileOnly("com.android.tools.build:manifest-merger:26.5.4")
 }
 
 gradlePlugin {
@@ -56,6 +59,10 @@ gradlePlugin {
         register("androidRoom") {
             id = "logic.android.room"
             implementationClass = "AndroidRoomConventionPlugin"
+        }
+        register("AutoRunnerPlugin") {
+            id = "logic.android.auto.runner"
+            implementationClass = "AndroidAutoRunnerPlugin"
         }
     }
 }

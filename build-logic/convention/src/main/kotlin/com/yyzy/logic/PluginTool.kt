@@ -18,3 +18,7 @@ fun DefaultTask.loge(msg: String) {
 fun Plugin<Project>.printlnLogic(msg: String) {
     println(">>> LogicTask ${javaClass.simpleName} $msg")
 }
+
+fun Project.loge(tag: String, msg: String) {
+    logger.error(">> $tag[$path] $msg")
+}
