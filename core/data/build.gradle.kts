@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.yyzy.main.core.data"
+    namespace = "com.yyzy.data"
 }
 
 dependencies {

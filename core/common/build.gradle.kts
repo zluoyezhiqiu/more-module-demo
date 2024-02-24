@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.yyzy.main.core.common"
+    namespace = "com.yyzy.common"
 }
 
 dependencies {

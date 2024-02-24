@@ -6,7 +6,7 @@ plugins {
 android {
     viewBinding.isEnabled = true
     resourcePrefix = "feature_"
-    namespace = "com.yyzy.main.feature.business"
+    namespace = "com.yyzy.feature.business"
 }
 
 dependencies {

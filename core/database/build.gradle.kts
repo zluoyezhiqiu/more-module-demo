@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    namespace = "com.yyzy.main.core.database"
+    namespace = "com.yyzy.database"
 }
 
 dependencies {

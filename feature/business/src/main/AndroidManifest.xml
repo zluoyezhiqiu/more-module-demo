@@ -2,7 +2,7 @@
 
     <application>
         <activity
-            android:name="com.yyzy.business.BusinessActivity"
+            android:name="com.yyzy.feature.business.BusinessActivity"
             android:exported="false" />
     </application>
 

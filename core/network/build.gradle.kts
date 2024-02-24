@@ -9,7 +9,7 @@ android {
     buildFeatures {
         buildConfig = true
     }
-    namespace = "com.yyzy.main.core.network"
+    namespace = "com.yyzy.network"
 }
 
 dependencies {

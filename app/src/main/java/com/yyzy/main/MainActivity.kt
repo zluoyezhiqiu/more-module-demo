@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import com.yyzy.business.BusinessActivity
+import com.yyzy.feature.business.BusinessActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         findViewById<View>(R.id.test).setOnClickListener {
-            startActivity(Intent(this,BusinessActivity::class.java))
+            startActivity(Intent(this, BusinessActivity::class.java))
         }
         mainViewModel.print()
     }

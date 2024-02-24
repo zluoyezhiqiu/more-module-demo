@@ -1,8 +1,8 @@
-package com.yyzy.business
+package com.yyzy.feature.business
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.yyzy.main.feature.business.databinding.FeatureActivityBusinessBinding
+import com.yyzy.feature.business.databinding.FeatureActivityBusinessBinding
 
 class BusinessActivity : AppCompatActivity() {
 
