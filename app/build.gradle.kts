@@ -4,6 +4,7 @@ plugins {
     id("logic.android.application.flavors")
     id("logic.android.application.jacoco")
     id("jacoco")
+    id("logic.android.auto.arouter")
 }
 
 android {

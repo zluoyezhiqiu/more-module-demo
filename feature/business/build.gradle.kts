@@ -1,6 +1,7 @@
 plugins {
     id("logic.android.library")
     id("logic.android.library.jacoco")
+    id("logic.android.auto.arouter")
 }
 
 android {
