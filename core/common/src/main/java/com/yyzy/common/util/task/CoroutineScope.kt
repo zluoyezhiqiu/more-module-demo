@@ -2,8 +2,10 @@ package com.yyzy.common.util.task
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -17,6 +19,17 @@ import kotlinx.coroutines.launch
  * @Description: CODE
  * @Date: 2024/2/1
  */
+inline fun <T> ViewModel.repeatOnViewLifecycleOnViewModel(
+    flow: Flow<T>,
+    crossinline block: suspend CoroutineScope.(T) -> Unit
+) {
+    viewModelScope.launch {
+        flow.collectLatest {
+            block(it)
+        }
+    }
+}
+
 inline fun <T> CoroutineScope.repeatOnViewLifecycleOnComponent(
     flow: Flow<T>,
     crossinline block: suspend CoroutineScope.(T) -> Unit

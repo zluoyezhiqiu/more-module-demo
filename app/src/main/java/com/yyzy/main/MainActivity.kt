@@ -1,25 +1,51 @@
 package com.yyzy.main
-
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.activity.viewModels
+import androidx.navigation.NavType
+import androidx.navigation.activity
+import androidx.navigation.createGraph
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.fragment
+import com.yyzy.common.Navigation
 import com.yyzy.feature.business.BusinessActivity
-import dagger.hilt.android.AndroidEntryPoint
+import com.yyzy.feature.business.HomeFragment
+import com.yyzy.feature.setting.SettingFragment
 
-
-@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
-    private val mainViewModel: MainActivityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        findViewById<View>(R.id.test).setOnClickListener {
-            startActivity(Intent(this, BusinessActivity::class.java))
+        setNavigation()
+    }
+
+    private fun setNavigation(){
+        //https://developer.android.com/guide/navigation/design/kotlin-dsl?hl=zh-cn#activity
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
+        val navController = navHostFragment.navController
+        navController.graph = navController.createGraph(
+            startDestination = Navigation.Routes.HOME
+        ) {
+            fragment<HomeFragment>(Navigation.Routes.HOME) {
+                label = resources.getString(R.string.frag_home)
+            }
+            fragment<SettingFragment>("${Navigation.Routes.SETTING}/{${Navigation.Arguments.SETTING_ID}}") {
+                label = resources.getString(R.string.frag_setting)
+                argument(Navigation.Arguments.SETTING_ID) {
+                    type = NavType.StringType
+                    defaultValue = "null"
+                    nullable = true
+                }
+            }
+            activity(Navigation.Routes.ACTIVITY_BUS) {
+                label = getString(R.string.activity_bus)
+                activityClass = BusinessActivity::class
+                deepLink {
+                    uriPattern = "http://www.example.com/plants/"
+                    action = "android.intent.action.MY_ACTION"
+                    mimeType = "image/*"
+                }
+            }
         }
-        mainViewModel.print()
     }
 }

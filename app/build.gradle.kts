@@ -36,6 +36,7 @@ dependencies {
     implementation(project(":core:data"))
     implementation(project(":core:common"))
     implementation(project(":feature:business"))
+    implementation(project(":feature:setting"))
     implementation(project(":sync:work"))
     compileOnly(project(":core:database"))
 
@@ -46,7 +47,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core.v340)
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.activity.ktx)
-    implementation(libs.fragment.ktx)
+    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui)
+    implementation(libs.androidx.navigation.dynamic.feature)
 }
