@@ -1,4 +1,5 @@
 package com.yyzy.network
+
 import android.util.LruCache
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.yyzy.common.util.LogHelper
@@ -22,7 +23,7 @@ import kotlin.properties.Delegates
  */
 object OkHttpCreator {
 
-    private const val outTime = 60L
+    private const val OUT_TIME = 60L
 
     private const val DEFAULT_RETROFIT_SERVICE_MAX_SIZE = 10
 
@@ -69,10 +70,10 @@ object OkHttpCreator {
         return clientBuilder
             .addInterceptor(RequestInterceptor())
             .addInterceptor(createRetrofitHttpLoggingInterceptor())
-            .connectTimeout(outTime, TimeUnit.SECONDS)
-            .callTimeout(outTime, TimeUnit.SECONDS)
-            .readTimeout(outTime, TimeUnit.SECONDS)
-            .writeTimeout(outTime, TimeUnit.SECONDS)
+            .connectTimeout(OUT_TIME, TimeUnit.SECONDS)
+            .callTimeout(OUT_TIME, TimeUnit.SECONDS)
+            .readTimeout(OUT_TIME, TimeUnit.SECONDS)
+            .writeTimeout(OUT_TIME, TimeUnit.SECONDS)
             .build()
     }
 

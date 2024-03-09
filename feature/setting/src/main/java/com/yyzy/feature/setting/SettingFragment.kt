@@ -40,6 +40,9 @@ class SettingFragment : Fragment() {
             val busId = arguments?.getString(Navigation.Arguments.SETTING_ID)
             text = "$text\n $busId"
             setOnClickListener {
+//                val params = SearchParameters("rose", listOf("available"))
+//                val searchArgument = Uri.encode(Json.encodeToString(params))
+//                navController.navigate("${nav_routes.plant_search}/$searchArgument")
                 findNavController().navigate(Navigation.Routes.ACTIVITY_BUS)
             }
         }

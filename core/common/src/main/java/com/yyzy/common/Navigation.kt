@@ -17,6 +17,6 @@ object Navigation {
 
     object Arguments {
         const val SETTING_ID = "plant_id"
-      //  const val BUS_NAME = "plant_name"
+        const val BUS_NAME = "plant_name"
     }
 }
