@@ -1,5 +1,5 @@
 package com.yyzy.main
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
 import androidx.navigation.NavType
 import androidx.navigation.activity
@@ -7,13 +7,14 @@ import androidx.navigation.createGraph
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.fragment
 import com.yyzy.common.Navigation
+import com.yyzy.common.base.BaseActivity
 import com.yyzy.data.model.SearchParameters
 import com.yyzy.data.model.SearchParametersType
 import com.yyzy.feature.business.BusinessActivity
 import com.yyzy.feature.business.HomeFragment
 import com.yyzy.feature.setting.SettingFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
