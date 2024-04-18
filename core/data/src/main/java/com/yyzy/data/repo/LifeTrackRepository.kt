@@ -1,4 +1,5 @@
 package com.yyzy.data.repo
+
 import com.yyzy.database.dao.LifeTrackDAO
 import com.yyzy.database.model.LifeTrackEntity
 import com.yyzy.model.ClassAndGradle
@@ -13,20 +14,25 @@ import javax.inject.Inject
  */
 class LifeTrackRepository @Inject constructor(
     private val lifeTrackDAO: LifeTrackDAO
-) {
-    fun getLifeTrackFlow() = lifeTrackDAO.searchAllLifeTrackEntity()
+) : TrackRepository {
 
-    suspend fun saveLifeTrackEntity(lifeTrack: LifeTrackEntity = defalutLifeTrackEntity()) {
+    override fun getLifeTrackFlow() = lifeTrackDAO.searchAllLifeTrackEntity()
+
+    override suspend fun saveLifeTrackEntity() {
+        lifeTrackDAO.insert(defalutLifeTrackEntity())
+    }
+
+    override suspend fun saveLifeTrackEntity(lifeTrack: LifeTrackEntity) {
         lifeTrackDAO.insert(lifeTrack)
     }
 
     private fun defalutLifeTrackEntity(): LifeTrackEntity {
         return LifeTrackEntity(
-            id = "444",
-            like = "la",
-            type = "ji",
-            character = "a",
-            lifeTrack = arrayListOf("pig school"),
+            id = "0",
+            like = "dog",
+            type = "anim",
+            character = "d",
+            lifeTrack = arrayListOf("eat"),
             classGradle = ClassAndGradle.TIE_TANG,
         )
     }

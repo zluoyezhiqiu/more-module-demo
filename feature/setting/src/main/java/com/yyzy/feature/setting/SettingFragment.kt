@@ -38,7 +38,7 @@ class SettingFragment : Fragment() {
 
         setBinding.fragSettingTv.apply {
             val busId = arguments?.getString(Navigation.Arguments.SETTING_ID)
-            text = "$text\n $busId"
+            text = "$text\n$busId"
             setOnClickListener {
 //                val params = SearchParameters("rose", listOf("available"))
 //                val searchArgument = Uri.encode(Json.encodeToString(params))

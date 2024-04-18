@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.yyzy.common"
-    //namespace = "com.yyzy.core.common"
+    //推荐 namespace = "com.yyzy.main.core.common"
 }
 
 dependencies {

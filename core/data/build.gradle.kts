@@ -18,4 +18,6 @@ dependencies {
     implementation(project(":core:database"))
 
     implementation(libs.androidx.navigation.ui)
+
+    testImplementation(project(":core:testing"))
 }

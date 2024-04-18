@@ -5,7 +5,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
 import com.yyzy.common.util.task.repeatOnViewLifecycleOnViewModel
 import com.yyzy.common.util.task.requestMain
-import com.yyzy.data.repo.LifeTrackRepository
+import com.yyzy.data.repo.TrackRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import javax.inject.Inject
@@ -19,7 +19,7 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class BusinessViewModel @Inject constructor(
-    private val lifeTrackRepository: LifeTrackRepository
+    private val lifeTrackRepository: TrackRepository
 ) : ViewModel(), DefaultLifecycleObserver {
 
     private val _messageFlow = MutableSharedFlow<String>()
