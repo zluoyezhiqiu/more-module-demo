@@ -25,9 +25,12 @@ class BusinessActivity : AppCompatActivity() {
         setContentView(activityBinding.root)
 
         val params = intent.getStringExtra(Navigation.Arguments.BUS_NAME)
-        lifecycle.addObserver(mainViewModel)
+        val formatStr = params?.let { SearchParametersType.parseValue(it) }?.toString()
+
         repeatOnViewLifecycleOnCreated(mainViewModel.messageFlow) { content ->
-            activityBinding.test.text = content +  params?.let {  SearchParametersType.parseValue(it) }?.toString()
+            activityBinding.test.text = "BusinessActivity ---> \n\n$content\n\n$formatStr"
         }
+
+        lifecycle.addObserver(mainViewModel)
     }
 }

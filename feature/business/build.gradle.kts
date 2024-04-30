@@ -1,6 +1,8 @@
+import com.yyzy.logic.CoreModule
+import com.yyzy.logic.runtimeOnlyProject
+
 plugins {
-    id("logic.android.library")
-    id("logic.android.library.jacoco")
+    id("logic.android.auto.runner")
     id("logic.android.hilt")
 }
 
@@ -24,4 +26,8 @@ dependencies {
     implementation(libs.fragment.ktx)
 
     implementation(libs.androidx.navigation.fragment)
+
+    if (project.isRunAsApp) {
+        runtimeOnlyProject(CoreModule.Network)
+    }
 }

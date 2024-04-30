@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="DNAttrs">
+        <attr name="dn_enable" format="boolean" />
+        <attr name="dn_textColor" format="boolean" />
+        <attr name="dn_background" format="boolean" />
+    </declare-styleable>
+
+    <style name="Main" parent="Theme.AppCompat.DayNight.NoActionBar">
+
+    </style>
+
+    <style name="Child_Theme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+    </style>
+
+    <style name="Dialog.TranslucentDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+    </style>
+
+    <style name="Dialog.NoFloatingTranslucentDialog" parent="Dialog.TranslucentDialog">
+        <item name="android:windowIsFloating">false</item>
+    </style>
+</resources>

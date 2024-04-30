@@ -28,13 +28,13 @@ data class LifeTrackEntity(
     val lifeTrack: List<String>,
     @ColumnInfo(name = "class_gradle")
     val classGradle: ClassAndGradle,
-){
+) {
     override fun toString(): String {
-        return "LifeTrackEntity(id='$id'," +
-                "like='$like'," +
-                "type='$type'," +
-                "character='$character',\n" +
-                "lifeTrack=$lifeTrack,\n" +
+        return "LifeTrackEntity(id='$id' \n" +
+                "like='$like' \n" +
+                "type='$type' \n" +
+                "character='$character' \n" +
+                "lifeTrack=$lifeTrack \n" +
                 "classGradle=$classGradle)"
     }
 }

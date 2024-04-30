@@ -19,8 +19,8 @@ import com.yyzy.feature.setting.databinding.SetFragSettingBinding
  */
 class SettingFragment : Fragment() {
 
-    private var _setBinding : SetFragSettingBinding ?= null
-    private inline val setBinding : SetFragSettingBinding
+    private var _setBinding: SetFragSettingBinding? = null
+    private inline val setBinding: SetFragSettingBinding
         get() = _setBinding!!
 
     override fun onCreateView(
@@ -38,11 +38,9 @@ class SettingFragment : Fragment() {
 
         setBinding.fragSettingTv.apply {
             val busId = arguments?.getString(Navigation.Arguments.SETTING_ID)
-            text = "$text\n$busId"
+            text = " SettingFragment ---> \n $busId"
+
             setOnClickListener {
-//                val params = SearchParameters("rose", listOf("available"))
-//                val searchArgument = Uri.encode(Json.encodeToString(params))
-//                navController.navigate("${nav_routes.plant_search}/$searchArgument")
                 findNavController().navigate(Navigation.Routes.ACTIVITY_BUS)
             }
         }

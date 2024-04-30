@@ -35,10 +35,12 @@ dependencies {
 
     implementation(project(":core:data"))
     implementation(project(":core:common"))
-    implementation(project(":feature:business"))
     implementation(project(":feature:setting"))
     implementation(project(":sync:work"))
+
     compileOnly(project(":core:database"))
+
+    implementation(project(":feature:business"))
 
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

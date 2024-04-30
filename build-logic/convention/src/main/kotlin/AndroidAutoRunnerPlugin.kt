@@ -1,5 +1,5 @@
 import com.android.build.api.dsl.ApplicationExtension
-import com.android.build.api.dsl.LibraryExtension
+import com.android.build.gradle.LibraryExtension
 import com.android.manifmerger.ManifestMerger2
 import com.android.manifmerger.MergingReport
 import com.android.utils.StdLogger
@@ -33,11 +33,15 @@ class AndroidAutoRunnerPlugin : BasePlugin() {
         val runAsApp = isRunAsApp(target)
         if (runAsApp) {
             target.apply("plugin" to "logic.android.application")
+            target.apply("plugin" to "logic.android.application.flavors")
+            target.apply("plugin" to "logic.android.application.jacoco")
         } else {
             target.apply("plugin" to "logic.android.library")
+            target.apply("plugin" to "logic.android.library.jacoco")
         }
+        target.apply("plugin" to "org.jetbrains.kotlin.android")
         target.extra.set("runAsApp", runAsApp)
-        manifestMerger(runAsApp,target)
+        manifestMerger(runAsApp, target)
     }
 
     private fun manifestMerger(runAsApp: Boolean, project: Project) {
@@ -93,7 +97,7 @@ class AndroidAutoRunnerPlugin : BasePlugin() {
         val allModuleBuildApkPattern = Pattern.compile(TASK_TYPES)
         project.gradle.startParameter.taskNames.forEach { task ->
             loge(project, "task===>$task")
-            if (allModuleBuildApkPattern.matcher(task.toUpperCase(Locale.getDefault())).matches()) {
+            if (allModuleBuildApkPattern.matcher(task.uppercase(Locale.getDefault())).matches()) {
                 taskIsAssemble = true
                 if (task.contains(":")) {
                     val arr = task.split(":")
@@ -107,7 +111,8 @@ class AndroidAutoRunnerPlugin : BasePlugin() {
                                 loge(project, "mainModuleName:${mainModuleName}")
                                 return@projects
                             }
-                        } catch (_: Exception) { }
+                        } catch (_: Exception) {
+                        }
                     }
                 }
                 return@forEach
@@ -154,3 +159,8 @@ private const val TASK_TYPES =
     ".*((((ASSEMBLE)|(BUILD)|(INSTALL)|((BUILD)?TINKER)|(RESGUARD)).*)|(ASR)|(ASD))"
 private const val DEBUG_DIR = "src/main/debug/"
 private const val TAG = ">> AutoRunner"
+
+val Project.isRunAsApp: Boolean
+    get() {
+        return extra["runAsApp"] as? Boolean == true
+    }

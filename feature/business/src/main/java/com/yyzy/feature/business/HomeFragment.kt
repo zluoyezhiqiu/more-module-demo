@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun navigateToPlant() {
-        findNavController().navigate("${Navigation.Routes.SETTING}/frag home plantId --> 112233")
+        findNavController().navigate("${Navigation.Routes.SETTING}/来自HomeFragment的参数")
     }
 
     override fun onDestroyView() {

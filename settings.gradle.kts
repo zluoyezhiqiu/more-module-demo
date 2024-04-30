@@ -6,6 +6,7 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -13,14 +14,20 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
 rootProject.name = "more-module-demo"
-include (":app")
-include (":core:database")
+
+include(":app")
+
+include(":core:database")
 include(":core:common")
 include(":core:data")
 include(":core:model")
 include(":core:network")
-include(":feature:business")
-include(":sync:work")
-include(":feature:setting")
 include(":core:testing")
+
+include(":feature:business")
+include(":feature:setting")
+
+include(":sync:work")
+
