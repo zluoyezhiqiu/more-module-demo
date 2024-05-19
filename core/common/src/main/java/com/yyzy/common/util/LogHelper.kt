@@ -5,7 +5,6 @@ import android.util.Log
 /**
  * @Author: ljl
  * @Email: ljl@dofun.cc
- * @ClassName: cn.cardoor.app.basic.util
  * @Description: CODE
  * @Date: 2023/8/4
  */
@@ -16,21 +15,6 @@ object LogHelper {
     @JvmStatic
     fun d(msg: String) {
         Log.d(TAG, msg.getFormatStr())
-    }
-
-    @JvmStatic
-    fun dOne(msg: String) {
-        Log.d("$TAG-Class1", msg.getFormatStr())
-    }
-
-    @JvmStatic
-    fun dTwo(msg: String) {
-        Log.d("$TAG-Class2", msg.getFormatStr())
-    }
-
-    @JvmStatic
-    fun dThree(msg: String) {
-        Log.d("Log-Class3", msg.getFormatStr())
     }
 
     @JvmStatic
