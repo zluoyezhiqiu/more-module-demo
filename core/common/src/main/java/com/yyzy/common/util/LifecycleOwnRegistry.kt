@@ -13,8 +13,9 @@ import androidx.lifecycle.LifecycleRegistry
  * @Description: 暂无描述
  */
 class LifecycleOwnRegistry(
-    tag: String? = null
-) : LifecycleOwner {
+    tag: String? = null,
+    parentOwner: LifecycleOwner? = null
+) : LifecycleOwner ,LifecycleEventObserver{
 
     private val lifecycleRegistry = LifecycleRegistry(this)
 
@@ -29,10 +30,15 @@ class LifecycleOwnRegistry(
                 }
             })
         }
+        parentOwner?.lifecycle?.addObserver(this)
     }
 
     override val lifecycle: Lifecycle
         get() = lifecycleRegistry
+
+    override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
+        lifecycleRegistry.handleLifecycleEvent(event)
+    }
 }
 
 

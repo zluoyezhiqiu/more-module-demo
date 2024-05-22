@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -24,6 +26,7 @@ dependencies {
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.ksp.gradlePlugin)
 
+    //noinspection GradleDependency
     compileOnly("com.android.tools:common:31.2.2")
     compileOnly("com.android.tools.build:manifest-merger:26.5.4")
 }
