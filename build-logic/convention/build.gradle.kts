@@ -26,9 +26,8 @@ dependencies {
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.ksp.gradlePlugin)
 
-    //noinspection GradleDependency
-    compileOnly("com.android.tools:common:31.2.2")
-    compileOnly("com.android.tools.build:manifest-merger:26.5.4")
+    compileOnly(libs.common)
+    compileOnly(libs.manifest.merger)
 }
 
 gradlePlugin {
@@ -63,9 +62,18 @@ gradlePlugin {
             id = "logic.android.room"
             implementationClass = "AndroidRoomConventionPlugin"
         }
-        register("AutoRunnerPlugin") {
+        register("autoRunnerPlugin") {
             id = "logic.android.auto.runner"
             implementationClass = "AndroidAutoRunnerPlugin"
+        }
+
+        register("androidFeature") {
+            id = "logic.android.feature"
+            implementationClass = "AndroidFeatureConventionPlugin"
+        }
+        register("androidTest") {
+            id = "logic.android.test"
+            implementationClass = "AndroidTestConventionPlugin"
         }
     }
 }

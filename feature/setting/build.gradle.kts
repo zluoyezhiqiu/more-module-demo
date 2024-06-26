@@ -1,7 +1,6 @@
 plugins {
-    id("logic.android.library")
+    id("logic.android.feature")
     id("logic.android.library.jacoco")
-    id("logic.android.hilt")
 }
 
 android {
@@ -11,9 +10,6 @@ android {
 }
 
 dependencies {
-
-    implementation(project(":core:data"))
-    implementation(project(":core:common"))
 
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

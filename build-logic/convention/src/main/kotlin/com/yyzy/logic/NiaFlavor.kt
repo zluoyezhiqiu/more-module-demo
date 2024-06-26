@@ -17,7 +17,7 @@ enum class FlavorDimension {
 @Suppress("EnumEntryName")
 enum class NiaFlavor(val dimension: FlavorDimension, val applicationIdSuffix: String? = null) {
     demo(FlavorDimension.contentType, applicationIdSuffix = ".demo"),
-    prod(FlavorDimension.contentType )
+    prod(FlavorDimension.contentType)
 }
 
 fun Project.configureFlavors(
