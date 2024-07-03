@@ -8,15 +8,20 @@ android {
 }
 
 dependencies {
-//    api(libs.androidx.compose.ui.test)
+
+    api(libs.junit4)
+    api(libs.turbine)
+    api(libs.hilt.android.testing)
+
     api(libs.androidx.test.core)
     api(libs.androidx.test.espresso.core)
+    api(libs.androidx.test.espresso.contrib)
+    
     api(libs.androidx.test.rules)
     api(libs.androidx.test.runner)
-    api(libs.hilt.android.testing)
-    api(libs.junit4)
+    api(libs.androidx.test.ext)
     api(libs.kotlinx.coroutines.test)
-    api(libs.turbine)
+    api(libs.androidx.test.uiautomator)
 
     implementation(project(":core:common"))
     implementation(project(":core:data"))

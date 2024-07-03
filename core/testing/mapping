@@ -1,0 +1,68 @@
+
+    project.afterEvaluate {
+        BuildListener buildListener = null
+        project.gradle.startParameter.taskNames.forEach { taskName ->
+            def assembleStart = taskName.indexOf("assemble")
+            def resguardStart = taskName.indexOf("resguard")
+            def taskNameStart = assembleStart == -1 ? resguardStart : assembleStart
+            def releaseStart = taskName.indexOf("Release")
+            println("project--->${project.name}, startParameter taskName--->$taskName, assembleStart:$assembleStart, releaseStart:$releaseStart")
+            if (taskNameStart != -1 && releaseStart != -1) {
+                def exeTaskName = taskName.substring(taskNameStart, releaseStart + 7)
+                def buildTask = project.tasks.findByName(exeTaskName)
+                println "startParameter find task exeTaskName=$exeTaskName, buildTask=$buildTask"
+                if (buildTask != null) {
+                    if (buildListener != null) {
+                        // 保证只执行一次
+                        gradle.removeListener(buildListener)
+                    } else {
+                        buildListener = new BuildListener() {
+                            @Override
+                            void settingsEvaluated(Settings settings) {}
+
+                            @Override
+                            void projectsLoaded(Gradle gradle) {}
+
+                            @Override
+                            void projectsEvaluated(Gradle gradle) {}
+
+                            @Override
+                            void buildFinished(BuildResult result) {
+                                println("project--->${project.name}, startParameter all tasks buildFinished-------------------------")
+                                final String releaseTime = new SimpleDateFormat("HHmmss").format(new Date())
+                                android.applicationVariants.all { variant ->
+                                    if (variant.buildType.name.contains("release")) {
+                                        variant.outputs.each { output ->
+                                            def outputDirectory = variant.getPackageApplication().getOutputDirectory().getAsFile().get()
+                                            def outputs = new File(project.buildDir, "outputs")
+                                            def tarDir = "release/${variant.versionName}_$releaseTime/${variant.name}"
+                                            String outputFileName = output.outputFileName
+                                            String outputFileNameWithoutExtension = outputFileName.substring(0, outputFileName.length() - ".apk".length())
+
+                                            copy {
+                                                from outputDirectory,
+                                                        "$outputs/sdk-dependencies/${variant.name}"
+                                                include outputFileName
+                                                include "sdkDependencies.txt"
+                                                into(tarDir)
+                                            }
+                                            copy {
+                                                from "$outputs/mapping/${variant.name}"
+                                                into file("$tarDir/mapping")
+                                            }
+                                            copy {
+                                                from "$outputDirectory/AndResGuard_$outputFileNameWithoutExtension"
+                                                include "resource_mapping_${outputFileNameWithoutExtension}.txt"
+                                                into file("$tarDir/mapping")
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        gradle.addBuildListener(buildListener)
+                    }
+                }
+            }
+        }
+    }
