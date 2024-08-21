@@ -4,8 +4,8 @@ import android.util.LruCache
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.yyzy.common.util.LogHelper
 import com.yyzy.network.interceptor.RequestInterceptor
-import com.yyzy.network.util.HttpLogUtils
 import com.yyzy.network.util.OkHttpUtils
+import com.yyzy.network.util.PrettyHttpLogger
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
@@ -51,9 +51,10 @@ object OkHttpCreator {
     }
 
     private fun createRetrofitHttpLoggingInterceptor() : HttpLoggingInterceptor {
-        val loggingInterceptor = HttpLoggingInterceptor { message ->
-            HttpLogUtils.printFormatContent(message)
-        }
+//        val loggingInterceptor = HttpLoggingInterceptor { message ->
+//            HttpLogUtils.printFormatContent(message)
+//        }
+        val loggingInterceptor = HttpLoggingInterceptor(PrettyHttpLogger)
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         return loggingInterceptor
     }

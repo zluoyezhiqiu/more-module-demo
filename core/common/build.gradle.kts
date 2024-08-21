@@ -9,6 +9,7 @@ android {
 }
 
 dependencies {
+    api(libs.google.gson)
     implementation(libs.androidx.appcompat)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.lifecycle.viewmodel.ktx)

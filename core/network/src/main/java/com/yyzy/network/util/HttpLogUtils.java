@@ -29,9 +29,9 @@ public class HttpLogUtils {
      * @return 格式化后的json串
      */
     public static String formatJson(String jsonStr) {
-        if (null == jsonStr || "".equals(jsonStr)) return "";
+        if (null == jsonStr || jsonStr.isEmpty()) return "";
         StringBuilder sb = new StringBuilder();
-        char last = '\0';
+        char last;
         char current = '\0';
         int indent = 0;
         for (int i = 0; i < jsonStr.length(); i++) {

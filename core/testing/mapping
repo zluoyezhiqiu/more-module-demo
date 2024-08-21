@@ -66,3 +66,17 @@
             }
         }
     }
+
+        android.applicationVariants.all { variant ->
+            variant.outputs.all { output ->
+                def project = "test"
+                def separator = "_"
+                def versionName = variant.versionName
+                def buildType = buildType.name
+                def outputFile = output.outputFile
+                if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                    def apkName = project + separator + versionName  + separator + buildType + ".apk"
+                    outputFileName = apkName
+                }
+            }
+        }
