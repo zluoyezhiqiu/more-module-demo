@@ -3,8 +3,8 @@ package com.yyzy.feature.business
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
-import com.yyzy.common.util.task.repeatOnViewLifecycleOnViewModel
-import com.yyzy.common.util.task.requestMain
+import com.yyzy.common.expansion.repeatOnLifecycleOnViewModel
+import com.yyzy.common.expansion.requestMain
 import com.yyzy.data.repo.TrackRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -30,7 +30,7 @@ class BusinessViewModel @Inject constructor(
         super.onCreate(owner)
         requestMain {
             lifeTrackRepository.saveLifeTrackEntity()
-            repeatOnViewLifecycleOnViewModel(lifeTrackRepository.getLifeTrackFlow()) {
+            repeatOnLifecycleOnViewModel(lifeTrackRepository.getLifeTrackFlow()) {
                 _messageFlow.emit(it.joinToString { entity ->
                     entity.toString()
                 })

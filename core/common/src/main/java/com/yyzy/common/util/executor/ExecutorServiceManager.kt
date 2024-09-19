@@ -1,4 +1,4 @@
-package com.yyzy.common.util.task.executor
+package com.yyzy.common.util.executor
 
 interface ExecutorServiceManager {
     fun cancel(r: Runnable): Boolean

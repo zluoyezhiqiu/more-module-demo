@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.yyzy.common.Navigation
-import com.yyzy.common.util.task.repeatOnViewLifecycleOnCreated
+import com.yyzy.common.expansion.repeatOnLifecycleOnCreated
 import com.yyzy.data.model.SearchParametersType
 import com.yyzy.feature.business.databinding.BusActivityBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,7 +27,7 @@ class BusinessActivity : AppCompatActivity() {
         val params = intent.getStringExtra(Navigation.Arguments.BUS_NAME)
         val formatStr = params?.let { SearchParametersType.parseValue(it) }?.toString()
 
-        repeatOnViewLifecycleOnCreated(mainViewModel.messageFlow) { content ->
+        repeatOnLifecycleOnCreated(mainViewModel.messageFlow) { content ->
             activityBinding.test.text = "BusinessActivity ---> \n\n$content\n\n$formatStr"
         }
 

@@ -1,4 +1,4 @@
-package com.yyzy.common.util.task.executor
+package com.yyzy.common.util.executor
 
 import android.os.Handler
 import android.os.HandlerThread

@@ -68,6 +68,8 @@ obj/
 /out/
 
 # User-specific configurations
+.idea/deploymentTargetSelector.xml
+.idea/appInsightsSettings.xml.xml
 .idea/caches/
 .idea/libraries/
 .idea/shelf/
